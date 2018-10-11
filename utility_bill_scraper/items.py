@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://doc.scrapy.org/en/latest/topics/items.html
-
 import scrapy
 
 
-class UtilityBillScraperItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class BillingItem(scrapy.Item):
+    bill_due_date = scrapy.Field()
+    bill_amount = scrapy.Field()
+    meter_read_date = scrapy.Field()
+
+
+class UsageItem(scrapy.Item):
+    meter_read_date = scrapy.Field()
+    usage_kwh = scrapy.Field()
+
