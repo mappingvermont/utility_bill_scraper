@@ -1,0 +1,6 @@
+# environment files
+*.env
+*.envrc
+
+# compiled python files
+*.pyc
