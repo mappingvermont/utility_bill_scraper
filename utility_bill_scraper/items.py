@@ -3,12 +3,14 @@ import scrapy
 
 
 class BillingItem(scrapy.Item):
-    bill_due_date = scrapy.Field()
+    service_end_date = scrapy.Field()
     bill_amount = scrapy.Field()
-    meter_read_date = scrapy.Field()
+    bill_due_date = scrapy.Field()
 
 
 class UsageItem(scrapy.Item):
-    meter_read_date = scrapy.Field()
+    service_end_date = scrapy.Field()
+    bill_day_count = scrapy.Field()
     usage_kwh = scrapy.Field()
+    service_start_date = scrapy.Field()
 

@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+
+  base:
+    build:
+      context: .
+    image: 'utility_bill_scraper:version'
+    entrypoint: /bin/bash
+    env_file: .env
+    volumes:
+      - '.:/home/utility_bill_scraper'
+
+  test:
+    image: 'utility_bill_scraper:version'
+    entrypoint: bash -c 'nosetests -v -s -w /home/utility_bill_scraper/;'
+    env_file: .env
+    volumes:
+      - '.:/home/utility_bill_scraper'
+
+  scrape:
+    image: 'utility_bill_scraper:version'
+    command: bash -c 'scrapy crawl bill -L ERROR'  
+    env_file: .env
+    working_dir: /home/utility_bill_scraper
+    volumes:
+      - '.:/home/utility_bill_scraper'
+

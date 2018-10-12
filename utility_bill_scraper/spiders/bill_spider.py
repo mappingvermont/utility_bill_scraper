@@ -43,7 +43,7 @@ class Bill(InitSpider):
 
     def parse_billing_statement(self, row):
         return BillingItem({
-            'meter_read_date': self.get_table_text(row, 1),
+            'service_end_date': self.get_table_text(row, 1),
             'bill_amount': self.get_table_text(row, 2),
             'bill_due_date': self.get_table_text(row, 3)
               })
@@ -51,7 +51,8 @@ class Bill(InitSpider):
     def parse_usage_statement(self, response):
         for row in response.xpath('//table[@id="paymentsTable"]//tbody//tr')[1:]:
             yield UsageItem({
-                'meter_read_date': self.get_table_text(row, 1),
+                'service_end_date': self.get_table_text(row, 1),
+                'bill_day_count': self.get_table_text(row, 2),
                 'usage_kwh': self.get_table_text(row, 5),
                   })
 
